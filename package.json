@@ -1,7 +1,7 @@
 {
   "name": "multi-repos-manager",
   "version": "0.1.1",
-  "description": "",
+  "description": "A commandline tool to `git` in multiple repositories.",
   "bin": {
     "mrm": "bin/mrm.js"
   },
