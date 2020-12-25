@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for path in ./*
+do
+  if [[ -d $path && -d "$path/.git" ]]; then
+    root="$(basename $path)"
+    git -C $path grep $* |sed "s/^.*/$root\/&/"
+  fi
+done
+# git remote show origin
+# git config --get remote.origin.url
+# git pull origin master --allow-unrelated-historie
+# https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error

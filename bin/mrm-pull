@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for path in ./*
+do
+  if [[ -d $path ]]; then
+    cd $path > /dev/null
+    if [[ -d ".git" ]]; then
+      # git remote show origin
+      git config --get remote.origin.url
+      # git pull origin master --allow-unrelated-historie
+      # https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error
+      git pull > /dev/null
+    fi
+    cd - > /dev/null
+  fi
+done

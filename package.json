@@ -1,0 +1,14 @@
+{
+  "name": "multi-repos-manager",
+  "version": "0.1.0",
+  "description": "",
+  "bin": {
+    "mrm": "bin/mrm.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^6.2.1"
+  }
+}
