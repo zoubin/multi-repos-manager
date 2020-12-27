@@ -2,15 +2,11 @@
 
 for path in ./*
 do
-  if [[ -d $path ]]; then
-    cd $path > /dev/null
-    if [[ -d ".git" ]]; then
-      # git remote show origin
-      git config --get remote.origin.url
-      # git pull origin master --allow-unrelated-historie
-      # https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error
-      git pull > /dev/null
-    fi
-    cd - > /dev/null
+  if [[ -d $path && -d "$path/.git" ]]; then
+    # git remote show origin
+    git -C $path config --get remote.origin.url
+    # git pull origin master --allow-unrelated-historie
+    # https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error
+    git -C $path pull > /dev/null
   fi
 done
