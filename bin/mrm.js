@@ -2,6 +2,8 @@
 
 const program = require('commander')
 
+program.version(require('../package.json').version)
+
 program
   .command('clone [repos...]')
   .description('git clone OR git pull')
