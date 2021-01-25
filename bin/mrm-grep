@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for path in ./*
+for path in $*
 do
   if [[ -d $path && -d "$path/.git" ]]; then
     root="$(basename $path)"

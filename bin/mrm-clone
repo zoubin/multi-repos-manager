@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for remote in $*
+do
+  echo "## $remote"
+  output=$(git clone --quiet $remote > /dev/null)
+done
+

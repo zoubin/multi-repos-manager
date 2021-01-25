@@ -5,16 +5,12 @@ const program = require('commander')
 program.version(require('../package.json').version)
 
 program
-  .command('clone [repos...]')
-  .description('git clone OR git pull')
-  .option('-c, --conf <path>')
-  .option('-V, --no-verbose')
-  .action(require('./clone'))
+  .command('clone', 'git clone multiple repos')
 
 program
-  .command('pull', 'git pull repos in the current working directory')
+  .command('pull', 'git pull multiple repos')
 
 program
-  .command('grep', 'git grep in repos in the current working directory')
+  .command('grep', 'git grep in multiple repos')
 
 program.parse()
