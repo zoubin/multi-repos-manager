@@ -1,13 +1,30 @@
 #!/bin/bash
 
-for path in $*
-do
-  if [[ -d $path && -d "$path/.git" ]]; then
-    root="$(basename $path)"
-    git -C $path grep $* |sed "s/^.*/$root\/&/"
+dirs=()
+# https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+while [[ $# -gt 0 ]]; do
+  if [[ "$1" == "--" ]]; then
+    shift
+    break
+  else
+    dirs+=($1)
+    shift
   fi
 done
-# git remote show origin
-# git config --get remote.origin.url
-# git pull origin master --allow-unrelated-historie
-# https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error
+
+function realpath {
+  echo $(cd $(dirname $1); pwd)/$(basename $1);
+}
+
+slash="/"
+escaped="\/"
+for path in "${dirs[@]}"
+do
+  if [[ -d $path && -d "$path/.git" ]]; then
+    # https://stackoverflow.com/questions/3915040/how-to-obtain-the-absolute-path-of-a-file-via-shell-bash-zsh-sh
+    root=$(realpath $path)
+    # https://stackoverflow.com/questions/13210880/replace-one-substring-for-another-string-in-shell-script
+    root="${root//$slash/$escaped}"
+    git -C $path grep --color=always $* |sed "s/^.*/$root\/&/"
+  fi
+done

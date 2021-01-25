@@ -10,14 +10,12 @@ mrm -h
 ## Examples
 
 ```bash
-# clone multiple repos into the current directory
-mrm clone repo-1 repo-2
-mrm clone -c fileContainingRepos
+mrm clone remote-url remote-url
 
-# git pull in each repo in the current directory
-mrm pull
+mrm pull dir-1 dir-2
+mrm pull ./*
 
-# git grep in each repo in the current directory
-mrm grep keywords
+mrm grep dir-1 dir-2 -- -noE keywords
+mrm grep ./* -- -noE keywords
 
 ```
