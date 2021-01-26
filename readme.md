@@ -12,10 +12,10 @@ mrm -h
 ```bash
 mrm clone remote-url remote-url
 
-mrm pull dir-1 dir-2
-mrm pull ./*
+mrm pull repo-dir-1 repo-dir-2
+mrm pull
 
-mrm grep dir-1 dir-2 -- -noE keywords
-mrm grep ./* -- -noE keywords
+mrm grep -noE keywords -- -- repo-dir-1 repo-dir-2
+mrm grep -noE keywords
 
 ```
